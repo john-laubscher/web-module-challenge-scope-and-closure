@@ -43,6 +43,7 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+    A closure is what we use when we want to connect functions. The code has been identified some other place so we can use it in other lines of code as long as it's within the proper scope.
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +65,11 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+  - Name is identified in personalDice function, but used in the return function
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+  - Dan's name will always stay the same, but the roll will be different due to the math.random.
 c. What is the lexical scope of `newRoll`? 
+  - Other code can access it from within the function, but not from outside of it
 
 
 ### Task 3 - Stretch Goals
