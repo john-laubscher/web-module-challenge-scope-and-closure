@@ -65,8 +65,7 @@ NOTE: This will be a callback function for the tasks below
 */
 
 function inning(){
-  let num= Math.ceil(Math.random() * 3)-1;
-  return num;
+  return Math.ceil(Math.random() * 3)-1;
 }
 
 
@@ -86,39 +85,32 @@ Use the finalScore function below to do the following:
 
 function finalScore(inningcb,inningsPlayed){
 
-  let homeScore=0
-  let awayScore=0
+ let score = {Home:0, Away:0}
 
   for(let i=0; i<inningsPlayed; i++){
-  homeScore = homeScore + inningcb()
-  awayScore = awayScore + inningcb()
+  score.Home  += inningcb()
+  score.Away  += inningcb()
   }
-  return{
-    Home: homeScore,
-    Away: awayScore,
+  return score
   }
-}
+
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(inningcb, inningsPlayed) {
-  let homeScore=0
-  let awayScore=0
+function getInningScore(inning) {
+  let score = { Home: 0, Away:0};
 
-  for(let i=0; i<inningsPlayed; i++){
-  homeScore = homeScore + inningcb
-  awayScore = awayScore + inningcb
+  
+  score.Home += inning();
+  score.Away += inning();
+  
+  return score;
   }
-  return{
-    Home: homeScore,
-    Away: awayScore,
-  }
-}
 
-getInningScore(inning(), 2)
+
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -161,18 +153,25 @@ Use the scoreboard function below to do the following:
 ]  
   */
 
-function scoreboard(getInningScorecb, inningcb, inningsPlayed,) {
+function scoreboard(getInningScore, inning, inningsPlayed,) {
   const gameRecap = [];
-  const scoreByInnings = getInningScorecb(inningcb,inningsPlayed)
-    if(getInningScorecb.homeScore) === getInningScorecb.awayScore{
-        gameRecap.push (`This game will require extra innings: Away ${getInningScorecb.Away} - Home ${getInningScorecb.Home}`)
-    }
-  gameRecap.unshift(`Inning ${i+1}: Away ${getInningScorecb.Away} - Home: ${getInningScorecb.Home}`)
-
+  let homeScoreTotal = 0;
+  let awayScoreTotal = 0;
+  for(let i=0; i<inningsPlayed; i++){  
+    let currentInning = getInningScore(inning);
+    gameRecap.push(`Inning ${i+1}: Away ${currentInning.Away} - Home: ${currentInning.Home}`)  
+    homeScoreTotal += currentInning.Home;
+    awayScoreTotal += currentInning.Away;
 
   }
+    if(getInningScore.homeScore === getInningScore.awayScore){
+        gameRecap.push (`This game will require extra innings: Away ${awayScoreTotal} - Home ${homeScoreTotal}`)
+    }   else{
 
-}
+    }  
+  return gameRecap;
+  }
+console.log(scoreboard(getInningScore, inning, 9));
 
 
 
