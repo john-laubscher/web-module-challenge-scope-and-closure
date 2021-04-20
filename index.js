@@ -45,7 +45,12 @@ function counterMaker() {
   }
 }
 
+
 const counter1 = counterMaker();
+console.log('counter1', counter1());
+console.log('counter1', counter1());
+console.log('counter1', counter1());
+console.log('counter1', counter1());
 
 // counter2 code
 let count = 0;
@@ -53,7 +58,10 @@ let count = 0;
 function counter2() {
   return count++;
 }
-
+console.log('counter2', counter2());
+console.log('counter2', counter2());
+console.log('counter2', counter2());
+console.log('counter2', counter2());
 
 /* ⚾️⚾️⚾️ Task 2: inning() ⚾️⚾️⚾️
 Use the inning function below to do the following:
@@ -164,7 +172,7 @@ function scoreboard(getInningScore, inning, inningsPlayed,) {
     awayScoreTotal += currentInning.Away;
 
   }
-    if(getInningScore.homeScore === getInningScore.awayScore){
+    if(homeScoreTotal === awayScoreTotal){
         gameRecap.push (`This game will require extra innings: Away ${awayScoreTotal} - Home ${homeScoreTotal}`)
     }   else{
 
